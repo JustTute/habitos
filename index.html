@@ -1,4 +1,5 @@
-<!DOCTYPE html><html lang="es">
+<!DOCTYPE html>
+<html lang="es">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,199 +8,203 @@
   <style>
     :root {
       color-scheme: dark;
-    }body {
-  background:
-    radial-gradient(circle at top, rgba(80, 120, 255, 0.14), transparent 28%),
-    radial-gradient(circle at 80% 10%, rgba(52, 211, 153, 0.12), transparent 22%),
-    linear-gradient(180deg, #0b1020 0%, #090d18 100%);
-  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif;
-  overflow-x: hidden;
-}
+    }
 
-.glass {
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  box-shadow:
-    0 10px 40px rgba(0, 0, 0, 0.25),
-    inset 0 1px 0 rgba(255, 255, 255, 0.08);
-}
+    body {
+      background:
+        radial-gradient(circle at top, rgba(80, 120, 255, 0.14), transparent 28%),
+        radial-gradient(circle at 80% 10%, rgba(52, 211, 153, 0.12), transparent 22%),
+        linear-gradient(180deg, #0b1020 0%, #090d18 100%);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif;
+      overflow-x: hidden;
+    }
 
-.day-cell {
-  position: relative;
-  transition: transform 180ms ease, box-shadow 220ms ease, background 220ms ease, border-color 220ms ease;
-}
+    .glass {
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow:
+        0 10px 40px rgba(0, 0, 0, 0.25),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    }
 
-.day-cell:hover {
-  transform: translateY(-1px) scale(1.02);
-}
+    .day-cell {
+      position: relative;
+      transition: transform 180ms ease, box-shadow 220ms ease, background 220ms ease, border-color 220ms ease;
+    }
 
-.day-done {
-  background: linear-gradient(180deg, rgba(52, 211, 153, 0.32), rgba(22, 163, 74, 0.22));
-  border-color: rgba(74, 222, 128, 0.55);
-  box-shadow: 0 0 0 1px rgba(74, 222, 128, 0.1), 0 10px 24px rgba(22, 163, 74, 0.18);
-}
+    .day-cell:hover {
+      transform: translateY(-1px) scale(1.02);
+    }
 
-.day-today {
-  box-shadow: 0 0 0 1px rgba(255,255,255,0.22), 0 0 0 4px rgba(255,255,255,0.05);
-}
+    .day-done {
+      background: linear-gradient(180deg, rgba(52, 211, 153, 0.32), rgba(22, 163, 74, 0.22));
+      border-color: rgba(74, 222, 128, 0.55);
+      box-shadow: 0 0 0 1px rgba(74, 222, 128, 0.1), 0 10px 24px rgba(22, 163, 74, 0.18);
+    }
 
-.streak-pop {
-  animation: streakPop 700ms cubic-bezier(.2,.9,.2,1);
-}
+    .day-today {
+      box-shadow: 0 0 0 1px rgba(255,255,255,0.22), 0 0 0 4px rgba(255,255,255,0.05);
+    }
 
-.pulse-ring {
-  animation: pulseRing 900ms ease-out forwards;
-}
+    .streak-pop {
+      animation: streakPop 700ms cubic-bezier(.2,.9,.2,1);
+    }
 
-.float-up {
-  animation: floatUp 900ms cubic-bezier(.2,.9,.2,1) forwards;
-}
+    .pulse-ring {
+      animation: pulseRing 900ms ease-out forwards;
+    }
 
-.confetti {
-  position: absolute;
-  width: 8px;
-  height: 14px;
-  border-radius: 999px;
-  opacity: 0;
-  animation: confettiBurst 1200ms cubic-bezier(.15,.85,.2,1) forwards;
-  will-change: transform, opacity;
-}
+    .float-up {
+      animation: floatUp 900ms cubic-bezier(.2,.9,.2,1) forwards;
+    }
 
-@keyframes streakPop {
-  0% { transform: scale(0.92); }
-  38% { transform: scale(1.1); }
-  65% { transform: scale(0.98); }
-  100% { transform: scale(1); }
-}
+    .confetti {
+      position: absolute;
+      width: 8px;
+      height: 14px;
+      border-radius: 999px;
+      opacity: 0;
+      animation: confettiBurst 1200ms cubic-bezier(.15,.85,.2,1) forwards;
+      will-change: transform, opacity;
+    }
 
-@keyframes pulseRing {
-  0% { transform: scale(0.9); opacity: 0.55; }
-  100% { transform: scale(1.5); opacity: 0; }
-}
+    @keyframes streakPop {
+      0% { transform: scale(0.92); }
+      38% { transform: scale(1.1); }
+      65% { transform: scale(0.98); }
+      100% { transform: scale(1); }
+    }
 
-@keyframes floatUp {
-  0% { transform: translateY(10px) scale(0.9); opacity: 0; }
-  20% { opacity: 1; }
-  100% { transform: translateY(-18px) scale(1); opacity: 0; }
-}
+    @keyframes pulseRing {
+      0% { transform: scale(0.9); opacity: 0.55; }
+      100% { transform: scale(1.5); opacity: 0; }
+    }
 
-@keyframes confettiBurst {
-  0% {
-    transform: translate(0, 0) rotate(0deg) scale(0.7);
-    opacity: 0;
-  }
-  18% {
-    opacity: 1;
-  }
-  100% {
-    transform: translate(var(--x), var(--y)) rotate(var(--r)) scale(1.08);
-    opacity: 0;
-  }
-}
+    @keyframes floatUp {
+      0% { transform: translateY(10px) scale(0.9); opacity: 0; }
+      20% { opacity: 1; }
+      100% { transform: translateY(-18px) scale(1); opacity: 0; }
+    }
 
+    @keyframes confettiBurst {
+      0% {
+        transform: translate(0, 0) rotate(0deg) scale(0.7);
+        opacity: 0;
+      }
+      18% {
+        opacity: 1;
+      }
+      100% {
+        transform: translate(var(--x), var(--y)) rotate(var(--r)) scale(1.08);
+        opacity: 0;
+      }
+    }
   </style>
 </head>
 <body class="min-h-screen text-white selection:bg-emerald-300/30">
   <div class="mx-auto flex min-h-screen max-w-6xl items-center justify-center px-4 py-6 sm:px-6 lg:px-8">
     <main class="w-full max-w-5xl">
       <section class="glass relative overflow-hidden rounded-[2rem] p-4 sm:p-6 lg:p-8">
-        <div class="pointer-events-none absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent"></div><div class="relative grid gap-5 lg:grid-cols-[380px_minmax(0,1fr)] lg:gap-8">
-      <aside class="space-y-4">
-        <div class="glass rounded-[1.75rem] p-5">
-          <div class="mb-5 flex items-start justify-between gap-3">
-            <div>
-              <p class="text-xs font-medium uppercase tracking-[0.22em] text-white/45">Habit tracker</p>
-              <h1 class="mt-2 text-2xl font-semibold tracking-tight sm:text-3xl">Racha diaria</h1>
-            </div>
-            <div class="rounded-2xl border border-white/10 bg-white/5 px-3 py-2 text-right">
-              <p class="text-[11px] uppercase tracking-[0.18em] text-white/45">Meta</p>
-              <p class="text-sm font-medium text-white/90">No cortar la cadena</p>
-            </div>
-          </div>
+        <div class="pointer-events-none absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent"></div>
 
-          <div id="streakCard" class="relative overflow-hidden rounded-[1.75rem] border border-white/10 bg-gradient-to-br from-emerald-400/18 via-emerald-300/8 to-white/5 p-5">
-            <div id="ringEffect" class="pointer-events-none absolute inset-0 hidden items-center justify-center">
-              <div class="pulse-ring h-32 w-32 rounded-full border border-emerald-300/40"></div>
-            </div>
-            <div class="relative flex items-end justify-between gap-4">
-              <div>
-                <p class="text-sm text-white/60">Racha actual</p>
-                <div class="mt-2 flex items-end gap-2">
-                  <span id="streakValue" class="text-5xl font-semibold leading-none tracking-tight">0</span>
-                  <span class="mb-1 text-base text-white/60">días</span>
+        <div class="relative grid gap-5 lg:grid-cols-[380px_minmax(0,1fr)] lg:gap-8">
+          <aside class="space-y-4">
+            <div class="glass rounded-[1.75rem] p-5">
+              <div class="mb-5 flex items-start justify-between gap-3">
+                <div>
+                  <p class="text-xs font-medium uppercase tracking-[0.22em] text-white/45">Habit tracker</p>
+                  <h1 class="mt-2 text-2xl font-semibold tracking-tight sm:text-3xl">Racha diaria</h1>
                 </div>
-                <p id="streakMessage" class="mt-3 text-sm text-emerald-100/90">Todavía no arrancaste esta racha.</p>
+                <div class="rounded-2xl border border-white/10 bg-white/5 px-3 py-2 text-right">
+                  <p class="text-[11px] uppercase tracking-[0.18em] text-white/45">Meta</p>
+                  <p class="text-sm font-medium text-white/90">No cortar la cadena</p>
+                </div>
               </div>
 
-              <div class="relative flex h-16 w-16 items-center justify-center rounded-2xl border border-white/10 bg-white/10 shadow-2xl shadow-emerald-500/10">
-                <span class="text-3xl">🔥</span>
-                <span id="plusOne" class="float-up pointer-events-none absolute top-1/2 hidden -translate-y-1/2 text-lg font-semibold text-emerald-300">+1</span>
+              <div id="streakCard" class="relative overflow-hidden rounded-[1.75rem] border border-white/10 bg-gradient-to-br from-emerald-400/18 via-emerald-300/8 to-white/5 p-5">
+                <div id="ringEffect" class="pointer-events-none absolute inset-0 hidden items-center justify-center">
+                  <div class="pulse-ring h-32 w-32 rounded-full border border-emerald-300/40"></div>
+                </div>
+                <div class="relative flex items-end justify-between gap-4">
+                  <div>
+                    <p class="text-sm text-white/60">Racha actual</p>
+                    <div class="mt-2 flex items-end gap-2">
+                      <span id="streakValue" class="text-5xl font-semibold leading-none tracking-tight">0</span>
+                      <span class="mb-1 text-base text-white/60">días</span>
+                    </div>
+                    <p id="streakMessage" class="mt-3 text-sm text-emerald-100/90">Todavía no arrancaste esta racha.</p>
+                  </div>
+
+                  <div class="relative flex h-16 w-16 items-center justify-center rounded-2xl border border-white/10 bg-white/10 shadow-2xl shadow-emerald-500/10">
+                    <span class="text-3xl">🔥</span>
+                    <span id="plusOne" class="float-up pointer-events-none absolute top-1/2 hidden -translate-y-1/2 text-lg font-semibold text-emerald-300">+1</span>
+                  </div>
+                </div>
+              </div>
+
+              <button id="markYesterdayBtn" class="group mt-5 flex w-full items-center justify-center gap-3 rounded-[1.35rem] bg-white px-4 py-4 text-[15px] font-semibold text-slate-900 shadow-[0_18px_40px_rgba(255,255,255,0.12)] transition hover:scale-[1.01] active:scale-[0.985]">
+                <span class="inline-flex h-9 w-9 items-center justify-center rounded-full bg-emerald-500 text-white shadow-lg shadow-emerald-500/30">✓</span>
+                Marcar ayer como completado
+              </button>
+
+              <p class="mt-3 text-center text-xs leading-relaxed text-white/45">
+                Cada toque valida el día anterior y extiende la racha si no estaba marcado.
+              </p>
+            </div>
+
+            <div class="glass rounded-[1.75rem] p-5">
+              <div class="mb-3 flex items-center justify-between">
+                <h2 class="text-base font-semibold tracking-tight">Resumen</h2>
+                <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/55">Diseño premium</span>
+              </div>
+
+              <div class="grid grid-cols-2 gap-3">
+                <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+                  <p class="text-xs uppercase tracking-[0.18em] text-white/40">Completados</p>
+                  <p id="completedCount" class="mt-2 text-2xl font-semibold tracking-tight">0</p>
+                </div>
+                <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+                  <p class="text-xs uppercase tracking-[0.18em] text-white/40">Mes</p>
+                  <p id="monthLabelSide" class="mt-2 text-lg font-semibold tracking-tight">—</p>
+                </div>
               </div>
             </div>
-          </div>
+          </aside>
 
-          <button id="markYesterdayBtn" class="group mt-5 flex w-full items-center justify-center gap-3 rounded-[1.35rem] bg-white px-4 py-4 text-[15px] font-semibold text-slate-900 shadow-[0_18px_40px_rgba(255,255,255,0.12)] transition hover:scale-[1.01] active:scale-[0.985]">
-            <span class="inline-flex h-9 w-9 items-center justify-center rounded-full bg-emerald-500 text-white shadow-lg shadow-emerald-500/30">✓</span>
-            Marcar ayer como completado
-          </button>
+          <section class="glass rounded-[1.75rem] p-4 sm:p-5 lg:p-6">
+            <div class="mb-5 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+              <div>
+                <p class="text-xs font-medium uppercase tracking-[0.22em] text-white/45">Calendario</p>
+                <h2 id="monthLabel" class="mt-2 text-2xl font-semibold tracking-tight">Mes Año</h2>
+              </div>
 
-          <p class="mt-3 text-center text-xs leading-relaxed text-white/45">
-            Cada toque valida el día anterior y extiende la racha si no estaba marcado.
-          </p>
-        </div>
-
-        <div class="glass rounded-[1.75rem] p-5">
-          <div class="mb-3 flex items-center justify-between">
-            <h2 class="text-base font-semibold tracking-tight">Resumen</h2>
-            <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/55">Diseño premium</span>
-          </div>
-
-          <div class="grid grid-cols-2 gap-3">
-            <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
-              <p class="text-xs uppercase tracking-[0.18em] text-white/40">Completados</p>
-              <p id="completedCount" class="mt-2 text-2xl font-semibold tracking-tight">0</p>
+              <div class="flex items-center gap-2 self-start rounded-2xl border border-white/10 bg-white/5 p-1.5">
+                <button id="prevMonthBtn" class="rounded-xl px-3 py-2 text-sm text-white/70 transition hover:bg-white/10 hover:text-white">←</button>
+                <button id="todayBtn" class="rounded-xl bg-white/10 px-4 py-2 text-sm font-medium text-white transition hover:bg-white/15">Hoy</button>
+                <button id="nextMonthBtn" class="rounded-xl px-3 py-2 text-sm text-white/70 transition hover:bg-white/10 hover:text-white">→</button>
+              </div>
             </div>
-            <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
-              <p class="text-xs uppercase tracking-[0.18em] text-white/40">Mes</p>
-              <p id="monthLabelSide" class="mt-2 text-lg font-semibold tracking-tight">—</p>
+
+            <div class="mb-3 grid grid-cols-7 gap-2 px-1 text-center text-[11px] font-medium uppercase tracking-[0.18em] text-white/35 sm:text-xs">
+              <div>Lun</div>
+              <div>Mar</div>
+              <div>Mié</div>
+              <div>Jue</div>
+              <div>Vie</div>
+              <div>Sáb</div>
+              <div>Dom</div>
             </div>
-          </div>
+
+            <div id="calendarGrid" class="grid grid-cols-7 gap-2 sm:gap-3"></div>
+          </section>
         </div>
-      </aside>
-
-      <section class="glass rounded-[1.75rem] p-4 sm:p-5 lg:p-6">
-        <div class="mb-5 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-          <div>
-            <p class="text-xs font-medium uppercase tracking-[0.22em] text-white/45">Calendario</p>
-            <h2 id="monthLabel" class="mt-2 text-2xl font-semibold tracking-tight">Mes Año</h2>
-          </div>
-
-          <div class="flex items-center gap-2 self-start rounded-2xl border border-white/10 bg-white/5 p-1.5">
-            <button id="prevMonthBtn" class="rounded-xl px-3 py-2 text-sm text-white/70 transition hover:bg-white/10 hover:text-white">←</button>
-            <button id="todayBtn" class="rounded-xl bg-white/10 px-4 py-2 text-sm font-medium text-white transition hover:bg-white/15">Hoy</button>
-            <button id="nextMonthBtn" class="rounded-xl px-3 py-2 text-sm text-white/70 transition hover:bg-white/10 hover:text-white">→</button>
-          </div>
-        </div>
-
-        <div class="mb-3 grid grid-cols-7 gap-2 px-1 text-center text-[11px] font-medium uppercase tracking-[0.18em] text-white/35 sm:text-xs">
-          <div>Lun</div>
-          <div>Mar</div>
-          <div>Mié</div>
-          <div>Jue</div>
-          <div>Vie</div>
-          <div>Sáb</div>
-          <div>Dom</div>
-        </div>
-
-        <div id="calendarGrid" class="grid grid-cols-7 gap-2 sm:gap-3"></div>
       </section>
-    </div>
-  </section>
-</main>
+    </main>
+  </div>
 
-  </div>  <script>
+  <script>
     const monthLabel = document.getElementById('monthLabel');
     const monthLabelSide = document.getElementById('monthLabelSide');
     const calendarGrid = document.getElementById('calendarGrid');
@@ -440,5 +445,6 @@
 
     updateSummary();
     buildCalendar(viewedMonth);
-  </script></body>
+  </script>
+</body>
 </html>
